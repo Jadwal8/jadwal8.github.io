@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Transaksi - Perpustakaan Jaya</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .transaction-list {
+      max-width: 1500px;
+      margin: 40px auto;
+      padding: 0 16px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 14px 20px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+      font-size: 16px;
+      color: #333;
+    }
+    th {
+      background-color: #f1c40f;
+      color: #2a2a3f;
+      font-weight: 700;
+    }
+    tr:hover {
+      background-color: #f9f9f9;
+    }
+    .btn-return {
+      background-color: #f1c40f;
+      color: #2a2a3f;
+      font-weight: 600;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .btn-return:hover {
+      background-color: #d4ac0d;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <img src="logo/Perpustakaan Jaya.png" alt="Logo Website" class="logo" />
+    <nav class="menu" id="menu">
+      <ul>
+        <li><a href="INDEX.HTML">Beranda</a></li>
+        <li><a href="transaksi.html" class="active">Transaksi</a></li>
+        <li><a href="profil.html">Profil</a></li>
+      </ul>
+    </nav>
+    <div class="hamburger" id="hamburger">&#9776;</div>
+  </div>
+
+  <section class="hero">
+    <h2>Riwayat Transaksi Kamu</h2>
+    <p>Daftar buku yang kamu pinjam dan statusnya.</p>
+  </section>
+
+  <section class="transaction-list">
+    <table>
+      <thead>
+        <tr>
+          <th>Judul Buku</th>
+          <th>Tanggal Pinjam</th>
+          <th>Tanggal Kembali</th>
+          <th>Status</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>The Story Of The Boy</td>
+          <td>2025-06-01</td>
+          <td>2025-06-10</td>
+          <td>Dipinjam</td>
+          <td><button class="btn-return">Kembalikan</button></td>
+        </tr>
+        <tr>
+          <td>Garden</td>
+          <td>2025-05-15</td>
+          <td>2025-05-25</td>
+          <td>Selesai</td>
+          <td>-</td>
+        </tr>
+      </tbody>
+
+      <tbody id="pinjam-list">
+
+      </tbody>
+
+    </table>
+  </section>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+
+    hamburger.addEventListener('click', () => {
+      menu.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.btn-return').forEach(button => {
+      button.addEventListener('click', () => {
+        alert('Buku berhasil dikembalikan! Terima kasih.');
+      });
+    });
+
+const pinjamList = document.getElementById('pinjam-list');
+const pinjaman = JSON.parse(localStorage.getItem('pinjaman')) || [];
+
+pinjaman.forEach(title => {
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td>${title}</td>
+    <td><input type="date" class="tgl-pinjam" /></td>
+    <td><input type="date" class="tgl-kembali" /></td>
+    <td>Pending</td>
+    <td><button class="btn-verify">Verifikasi</button></td>
+  `;
+  pinjamList.appendChild(tr);
+});
+
+pinjamList.addEventListener('click', e => {
+  if (e.target.classList.contains('btn-verify')) {
+    const row = e.target.closest('tr');
+    const title = row.cells[0].textContent;
+    const tglPinjam = row.querySelector('.tgl-pinjam').value;
+    const tglKembali = row.querySelector('.tgl-kembali').value;
+
+    if (!tglPinjam || !tglKembali) {
+      return alert('Pilih tanggal pinjam & kembali dulu, cok.');
+    }
+    row.cells[1].textContent = tglPinjam;
+    row.cells[2].textContent = tglKembali;
+    row.cells[3].textContent = 'Dipinjam';
+    row.cells[4].innerHTML = '<button class="btn-return">Kembalikan</button>';
+
+    saveTransaction(title, tglPinjam, tglKembali);
+  }
+});
+  </script>
+
+</body>
+</html>

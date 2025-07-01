@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profil Pengguna - Perpustakaan Jaya</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .profile-section {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      font-size: 16px;
+      color: #333;
+    }
+    .profile-section div {
+      margin-bottom: 16px;
+    }
+    .profile-section label {
+      font-weight: 600;
+      color: #f1c40f;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .profile-section p {
+      background: #f0f0f0;
+      padding: 10px 12px;
+      border-radius: 6px;
+      user-select: text;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <img src="logo/Perpustakaan Jaya.png" alt="Logo Website" class="logo" />
+    <nav class="menu" id="menu">
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="transaksi.html">Transaksi</a></li>
+        <li><a href="profil.html" class="active">Profil</a></li>
+      </ul>
+    </nav>
+    <div class="hamburger" id="hamburger">&#9776;</div>
+  </div>
+
+  <section class="hero">
+    <h2>Profil Pengguna</h2>
+    <p>Informasi akun kamu</p>
+  </section>
+
+  <section class="profile-section">
+    <div>
+      <label>Email</label>
+      <p>johndoe@example.com</p>
+    </div>
+    <div>
+      <label>Password</label>
+      <p>••••••••••••</p>
+    </div>
+  </section>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+
+    hamburger.addEventListener('click', () => {
+      menu.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>

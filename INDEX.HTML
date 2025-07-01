@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baca Buku Online Terlengkap</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="navbar">
+    <img src="logo/Perpustakaan Jaya.png" alt="Logo Website" class="logo" />
+    <div class="search-container">
+    <input type="text" class="search-bar" placeholder="Cari buku..." /></div>
+    <nav class="menu" id="menu">
+      <ul>
+        <li><a href="INDEX.HTML">Beranda</a></li>
+        <li><a href="transaksi.html">Transaksi</a></li>
+        <li><a href="profil.html">Profil</a></li>
+      </ul>
+    </nav>
+    <a href="login.html" class="login-button">Login</a>
+    <div class="hamburger" id="hamburger">&#9776;</div>
+  </div>
+
+  <section class="hero">
+    <h2>Selamat Datang di Perpustakaan Jaya</h2>
+    <p>Buku Buku Menarik ada Disini</p>
+  </section>
+
+  <section class="Kategori">
+  <h2>Kategori</h2>
+  <div class="rating-list">
+    <h3>Rating 5(3)</h3>
+    <h3>Rating 4(4)</h3>
+    <h3>Rating 3(1)</h3>
+    <h3>Rating 2(0)</h3>
+    <h3>Rating 1(0)</h3>
+  </div>
+</section>
+
+  <section class="gallery">
+  <h3>Galeri Buku</h3>
+  <div class="gallery-grid">
+    <div class="book-card">
+      <img src="buku/buku1.jpg" alt="Tales Under a Purple Sky" />
+      <p>Tales Under a Purple Sky</p>
+       <div class="rating">
+        ★★★★☆ 
+      </div>
+      <button class="btn-borrow" data-title="Tales Under a Purple Sky">🛒</button>
+    </div>
+
+    <div class="book-card">
+      <img src="buku/buku2.jpg" alt="Prayer Journal" />
+      <p>Prayer Journal</p>
+      <div class="rating">
+        ★★★★☆
+      </div>
+      <button class="btn-borrow" data-title="Prayer Journal">🛒</button>
+    </div>
+
+    <div class="book-card">
+      <img src="buku/buku3.jpg" alt="The Story Of The Boy" />
+      <p>The Story Of The Boy</p>
+       <div class="rating">
+        ★★★★★
+      </div>
+      <button class="btn-borrow" data-title="The Story Of The Boy">🛒</button>
+    </div>
+
+    <div class="book-card">
+      <img src="buku/buku4.jpg" alt="Garden" />
+      <p>Garden</p>
+       <div class="rating">
+        ★★★★★
+      </div>
+      <button class="btn-borrow" data-title="Garden">🛒</button>
+    </div>
+
+     <div class="book-card">
+      <img src="buku/buku5.jpg" alt="Soul" />
+      <p>Soul</p>
+      <div class="rating">
+        ★★★☆☆
+      </div>
+      <button class="btn-borrow" data-title="Soul">🛒</button>
+    </div>
+
+    <div class="book-card">
+      <img src="buku/buku6.jpg" alt="Venus" />
+      <p>Venus</p>
+      <div class="rating">
+        ★★★★☆
+      </div>
+      <button class="btn-borrow" data-title="Venus">🛒</button>
+    </div>
+
+    <div class="book-card">
+      <img src="buku/buku7.jpg" alt="Fairy Tale" />
+      <p>Fairy Tale</p>
+      <div class="rating">
+        ★★★★☆
+      </div>
+      <button class="btn-borrow" data-title="Fairy Tale">🛒</button>
+    </div>
+
+    <div class="book-card">
+      <img src="buku/buku8.jpg" alt="The Lost Kingdom" />
+      <p>The Lost Kingdom</p>
+      <div class="rating">
+        ★★★★★
+      </div>
+      <button class="btn-borrow" data-title="The Lost Kingdom">🛒</button>
+    </div>
+
+  </div>
+</section>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+
+    hamburger.addEventListener('click', () => {
+      menu.classList.toggle('active');
+    });
+
+  const searchBar = document.querySelector('.search-bar');
+  const gallerySection = document.querySelector('.gallery');
+
+  searchBar.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      gallerySection.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  document.querySelectorAll('.btn-borrow').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const title = btn.getAttribute('data-title');
+    let cart = JSON.parse(localStorage.getItem('pinjaman')) || [];
+    if (!cart.includes(title)) {
+      cart.push(title);
+      localStorage.setItem('pinjaman', JSON.stringify(cart));
+    }
+    window.location.href = 'transaksi.html';
+  });
+});
+  </script>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <img src="logo/Perpustakaan Jaya.png" alt="Logo" class="footer-logo" />
+    <p>© 2025 Perpustakaan Jaya.</p>
+  </div>
+</footer>
+
+</body>
+</html>

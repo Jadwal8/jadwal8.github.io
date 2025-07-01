@@ -1,0 +1,278 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+    color: #111;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: relative;
+  gap: 20px;
+}
+
+.search-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 900px;
+  padding: 8px 12px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline-color: none;
+  transition: all 0.5s ease;
+}
+
+.search-bar:focus {
+  border-color: lightskyblue;
+  box-shadow: 0 0 0 2px rgba(241, 196, 15, 0.2);
+}
+
+.logo {
+  width: 80px;
+  height: auto;
+  margin-right: auto;
+}
+
+.menu {
+  position: fixed;
+  top: 0; 
+  right: 0; 
+  height: 50%;
+  width: 180px;
+  background-color: #ffffff;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+  transform: translateX(100%);
+  transition: transform 1s ease;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+  padding-left: 50px;
+}
+
+.menu.active {
+  transform: translateX(0);
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu ul li {
+  margin-bottom: 20px;
+}
+
+.menu ul li a {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111;
+  text-decoration: none;
+  transition: color 0.5s ease;
+}
+
+.menu ul li a:hover {
+  color: #f1c40f;
+}
+
+.login-button {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  color: #f1c40f;
+}
+
+.hamburger {
+  font-size: 32px;
+  cursor: pointer;
+  user-select: none;
+  color: #111;
+}
+
+
+.hero {
+  padding: 40px 16px;
+  text-align: center;
+  background-color: gainsboro;
+  color: #2a2a3f;
+}
+
+.hero h2 {
+  font-size: 24px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.hero p {
+  font-size: 16px;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.Kategori {
+  text-align: center; /* judul tetap center */
+  margin-bottom: 30px;
+}
+
+.Kategori h2 {
+  font-size: 28px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: #333;
+  text-align: left;
+
+}
+
+.rating-list {
+  display: flex;
+  justify-content: flex-start; /* rating list ke kiri */
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 800px; /* bisa disesuaikan */
+  text-align: left;
+}
+
+.rating-list h3 {
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.rating-list h3:hover {
+  color: #f1c40f;
+}
+
+.gallery {
+  padding: 40px 20px;
+  background-color: whitesmoke;
+  color: #ffffff;
+  text-align: center;
+}
+
+.gallery h3 {
+  font-size: 24px;
+  margin-bottom: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #2c3e50;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 100px;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+.book-card {
+  background-color: #2a2a3f;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.book-card img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  display: block;
+}
+
+.book-card p {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #fff;
+  padding: 10px 12px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+  letter-spacing: 0.02em;
+}
+
+.rating {
+  color: #f1c40f; /* warna kuning emas */
+  font-size: 16px;
+  margin-bottom: 12px;
+  user-select: none;
+}
+
+.btn-borrow {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  margin: 8px;
+  transition: color 0.3s;
+}
+.btn-borrow:hover {
+  color: #f1c40f;
+}
+
+.site-footer {
+  background-color: #f9f9f9;
+  padding: 30px 20px;
+  text-align: center;
+  border-top: 1px solid #f9f9f9;
+  margin-top: none;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-logo {
+  width: 50px;
+  height: auto;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.footer-logo:hover {
+  opacity: 1;
+}
+
+.site-footer p {
+  font-size: 14px;
+  color: #777;
+}
